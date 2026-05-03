@@ -16,7 +16,7 @@ body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--t1);min-heig
 .logo{display:flex;align-items:center;gap:8px;}
 .logo-icon{width:26px;height:26px;background:var(--ac);border-radius:6px;display:flex;align-items:center;justify-content:center;}
 .logo-text{font-size:13px;font-weight:700;letter-spacing:.08em;}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;cursor:pointer;font-family:'Syne',sans-serif;font-weight:600;transition:all .18s;border-radius:10px;line-height:1;text-decoration:none;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;cursor:pointer;font-family:'Syne',sans-serif;font-weight:600;transition:all .18s;border-radius:10px;line-height:1;}
 .btn-primary{background:var(--ac);color:#fff;padding:15px 32px;font-size:15px;width:100%;box-shadow:0 4px 20px rgba(255,92,26,.35);}
 .btn-primary:hover{background:#e8480f;transform:translateY(-1px);}
 .btn-ghost{background:transparent;color:var(--t2);padding:9px 18px;font-size:12px;font-weight:500;border:1px solid var(--b2);}
@@ -83,6 +83,7 @@ body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--t1);min-heig
 .srow{display:flex;gap:8px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--b1);}
 .srow:last-child{border-bottom:none;}
 .sdot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:7px;}
+.intro-card{background:var(--s2);border:1px solid var(--b2);border-radius:14px;padding:22px;align-self:stretch;}
 @keyframes tdot{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
 @keyframes bIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .bc .bt,.bu .bt{animation:bIn .3s ease;}
@@ -114,7 +115,7 @@ body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--t1);min-heig
         </p>
       </div>
       <div class="fu2" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:1.75rem;">
-        <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;"><div style="font-size:18px;margin-bottom:4px;">⏱</div><div style="font-size:12px;font-weight:600;margin-bottom:2px;">Tempo limitado</div><div style="font-size:11px;color:var(--t3);">20–30s por rodada</div></div>
+        <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;"><div style="font-size:18px;margin-bottom:4px;">⏱</div><div style="font-size:12px;font-weight:600;margin-bottom:2px;">Tempo por rodada</div><div style="font-size:11px;color:var(--t3);">30–40 segundos</div></div>
         <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;"><div style="font-size:18px;margin-bottom:4px;">🔒</div><div style="font-size:12px;font-weight:600;margin-bottom:2px;">Sem preview</div><div style="font-size:11px;color:var(--t3);">Respostas imprevisíveis</div></div>
         <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;"><div style="font-size:18px;margin-bottom:4px;">🧠</div><div style="font-size:12px;font-weight:600;margin-bottom:2px;">Análise real</div><div style="font-size:11px;color:var(--t3);">Comportamento, não palavras</div></div>
         <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;"><div style="font-size:18px;margin-bottom:4px;">📊</div><div style="font-size:12px;font-weight:600;margin-bottom:2px;">Score + Perfil</div><div style="font-size:11px;color:var(--t3);">Resultado imediato</div></div>
@@ -130,11 +131,11 @@ body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--t1);min-heig
       </div>
       <div id="inp-error" style="display:none;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--rd);margin-bottom:14px;"></div>
       <div class="fu4">
-        <button class="btn btn-primary" id="btn-start" onclick="startTest()">
+        <button class="btn btn-primary" onclick="startTest()">
           Iniciar avaliação
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </button>
-        <div style="text-align:center;margin-top:14px;font-size:11px;color:var(--t3);">🔒 Sessão única — sem pausa após iniciar</div>
+        <div style="text-align:center;margin-top:14px;font-size:11px;color:var(--t3);">Sessão única — sem pausa após iniciar</div>
       </div>
     </div>
   </div>
@@ -148,15 +149,15 @@ body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--t1);min-heig
       <span class="logo-text">SalesIQ</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span style="font-size:11px;color:var(--t3);font-family:'JetBrains Mono',monospace;" id="chat-rlabel">1/5</span>
+      <span style="font-size:11px;color:var(--t3);font-family:'JetBrains Mono',monospace;" id="chat-rlabel">—</span>
       <span class="tag tg-gray" id="chat-tag">—</span>
     </div>
   </div>
-  <div class="tbar"><div class="tbar-fill" id="tbar" style="width:100%;background:var(--gr);"></div></div>
+  <div class="tbar"><div class="tbar-fill" id="tbar" style="width:0%;background:var(--gr);"></div></div>
   <div class="rstrip">
     <div id="rdots" style="display:flex;gap:6px;"></div>
     <div style="flex:1;"></div>
-    <div style="font-size:11px;color:var(--t3);font-family:'JetBrains Mono',monospace;" id="tlabel">30s</div>
+    <div style="font-size:11px;color:var(--t3);font-family:'JetBrains Mono',monospace;" id="tlabel">—</div>
   </div>
   <div class="meters">
     <div class="meter"><div class="mlabel">Interesse</div><div class="mtrack"><div class="mfill" id="m-interest" style="width:50%;background:var(--gr);"></div></div></div>
@@ -247,43 +248,43 @@ body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--t1);min-heig
 </div>
 
 <script>
-// ── TEMPLATES ──────────────────────────────
+var CLIENT_NAMES = ["Joana","Ricardo","Fernanda","Marcos","Patricia","Bruno","Amanda","Carlos","Leticia","Rafael","Camila","Andre","Juliana","Paulo","Mariana","Thiago","Beatriz","Felipe","Larissa","Eduardo"];
+
 var ROUNDS_TPL = [
-  {type:"rejeicao", tag:"Rejeição", cls:"tg-red", time:28,
-   v:["Não tenho interesse.","Não é para mim.","Já tenho o que preciso.","Não estou buscando isso agora.","Não me interessa no momento."]},
-  {type:"pressa", tag:"Pressa", cls:"tg-amber", time:22,
-   v:["Fala rápido, tô ocupado.","Tenho 1 minuto. Vai.","Estou saindo agora, seja breve.","Pode ir direto ao ponto?","Não tenho tempo agora."]},
-  {type:"preco", tag:"Preço", cls:"tg-blue", time:28,
-   v:["Preço é o que mais importa pra mim.","Ficou caro. Tem como melhorar?","O orçamento tá apertado.","Não temos budget pra isso.","Preciso de algo mais em conta."]},
-  {type:"concorrencia", tag:"Concorrência", cls:"tg-green", time:28,
-   v:["Já vi parecido mais barato.","Seu concorrente me fez proposta melhor.","Outros cobram menos por isso.","Não vi diferença do que já uso.","Por que vocês e não a concorrência?"]},
-  {type:"saida", tag:"Fechamento", cls:"tg-gray", time:25,
-   v:["Vou pensar. Me manda depois.","Preciso consultar meu sócio antes.","Me dá um tempo, depois eu falo.","Não é o momento certo.","Deixa eu ver com o time."]}
+  {type:"rejeicao", tag:"Rejeicao", cls:"tg-red", time:40,
+   v:["Nao tenho interesse.","Nao e para mim.","Ja tenho o que preciso.","Nao estou buscando isso agora.","Nao me interessa no momento."]},
+  {type:"pressa", tag:"Pressa", cls:"tg-amber", time:30,
+   v:["Fala rapido, to ocupado.","Tenho 1 minuto. Vai.","Estou saindo agora, seja breve.","Pode ir direto ao ponto?","Nao tenho tempo agora."]},
+  {type:"preco", tag:"Preco", cls:"tg-blue", time:40,
+   v:["Preco e o que mais importa pra mim.","Ficou caro. Tem como melhorar?","O orcamento ta apertado.","Nao temos budget pra isso.","Preciso de algo mais em conta."]},
+  {type:"concorrencia", tag:"Concorrencia", cls:"tg-green", time:40,
+   v:["Ja vi parecido mais barato.","Seu concorrente me fez proposta melhor.","Outros cobram menos por isso.","Nao vi diferenca do que ja uso.","Por que voces e nao a concorrencia?"]},
+  {type:"saida", tag:"Fechamento", cls:"tg-gray", time:35,
+   v:["Vou pensar. Me manda depois.","Preciso consultar meu socio antes.","Me da um tempo, depois eu falo.","Nao e o momento certo.","Deixa eu ver com o time."]}
 ];
 
 function pickV(tpl){ return tpl.v[Math.floor(Math.random()*tpl.v.length)]; }
 function buildOrder(){ var c=[1,2,3].sort(function(){return Math.random()-.5;}); return [0].concat(c).concat([4]); }
 
-// ── CLUSTERS ───────────────────────────────
 var CLUSTERS = [
-  {n:"desconto", w:["preço","desconto","barato","caro","custo","econom","orçamento","budget"]},
-  {n:"qualidade", w:["qualidade","resultado","eficien","melhor","único","tecnolog","diferencial"]},
+  {n:"desconto", w:["preco","desconto","barato","caro","custo","econom","orcamento","budget"]},
+  {n:"qualidade", w:["qualidade","resultado","eficien","melhor","unico","tecnolog","diferencial"]},
   {n:"urgencia", w:["hoje","agora","prazo","encerra","oferta","oportunidade","especial"]},
-  {n:"pergunta", w:["?","como","qual","quando","precisa","objetivo","busca","você"]},
+  {n:"pergunta", w:["como","qual","quando","precisa","objetivo","busca","voce"]},
   {n:"beneficio", w:["ganhar","retorno","roi","resultado","vantagem","produtiv","crescer"]},
-  {n:"acao", w:["fechar","agendar","marcar","próximo","proposta","contrato","demo","visita"]},
-  {n:"empatia", w:["entendo","compreendo","faz sentido","imagino","sua situação"]}
+  {n:"acao", w:["fechar","agendar","marcar","proximo","proposta","contrato","demo","visita"]},
+  {n:"empatia", w:["entendo","compreendo","imagino","situacao"]}
 ];
 
 function getProf(txt){
   if(!txt) return {};
-  var l=txt.toLowerCase(), p={};
+  var l=txt.toLowerCase(); var p={};
   for(var i=0;i<CLUSTERS.length;i++){
-    var c=CLUSTERS[i];
-    var count=0;
+    var c=CLUSTERS[i]; var count=0;
     for(var j=0;j<c.w.length;j++){ if(l.indexOf(c.w[j])>=0) count++; }
     p[c.n]=count;
   }
+  if(txt.indexOf("?")>=0) p["pergunta"]=(p["pergunta"]||0)+2;
   return p;
 }
 function dom(profile){
@@ -314,9 +315,8 @@ function lexSim(a,b){
   return inter/Math.max(ka.length,kb.length);
 }
 
-// ── ESTADO ─────────────────────────────────
 var G = {
-  name:"", product:"",
+  name:"", product:"", clientName:"",
   rounds:[], cur:0,
   timer:null, tLeft:0, tTotal:0,
   locked:false, startTs:0,
@@ -333,7 +333,6 @@ function saveCand(c){
   try{localStorage.setItem("siq6",JSON.stringify(CANDS));}catch(e){}
 }
 
-// ── NAVEGAÇÃO ──────────────────────────────
 function show(id){
   var all=document.querySelectorAll(".screen");
   for(var i=0;i<all.length;i++) all[i].classList.remove("active");
@@ -350,39 +349,29 @@ function resetTest(){
   show("s-entry");
 }
 
-// ── INICIAR ────────────────────────────────
 function startTest(){
-  var nameEl = document.getElementById("inp-name");
-  var prodEl = document.getElementById("inp-product");
-  var errEl  = document.getElementById("inp-error");
-
-  if(!nameEl || !prodEl){ alert("Erro: campos não encontrados."); return; }
-
-  var name    = nameEl.value.replace(/^\s+|\s+$/g,"");
-  var product = prodEl.value.replace(/^\s+|\s+$/g,"");
-
-  if(!name || !product){
-    errEl.textContent = "Preencha seu nome e o que você vende para continuar.";
-    errEl.style.display = "block";
+  var nameEl=document.getElementById("inp-name");
+  var prodEl=document.getElementById("inp-product");
+  var errEl=document.getElementById("inp-error");
+  var name=nameEl.value.replace(/^\s+|\s+$/g,"");
+  var product=prodEl.value.replace(/^\s+|\s+$/g,"");
+  if(!name||!product){
+    errEl.textContent="Preencha seu nome e o que voce vende para continuar.";
+    errEl.style.display="block";
     return;
   }
-  errEl.style.display = "none";
+  errEl.style.display="none";
 
-  var order = buildOrder();
-  var rounds = [];
+  var order=buildOrder();
+  var rounds=[];
   for(var i=0;i<order.length;i++){
-    var tpl = ROUNDS_TPL[order[i]];
-    rounds.push({
-      type:  tpl.type,
-      tag:   tpl.tag,
-      cls:   tpl.cls,
-      time:  tpl.time,
-      msg:   pickV(tpl)
-    });
+    var tpl=ROUNDS_TPL[order[i]];
+    rounds.push({type:tpl.type,tag:tpl.tag,cls:tpl.cls,time:tpl.time,msg:pickV(tpl)});
   }
+  var cName=CLIENT_NAMES[Math.floor(Math.random()*CLIENT_NAMES.length)];
 
-  G = {
-    name:name, product:product,
+  G={
+    name:name, product:product, clientName:cName,
     rounds:rounds, cur:0,
     timer:null, tLeft:0, tTotal:0,
     locked:false, startTs:0,
@@ -395,27 +384,53 @@ function startTest(){
   document.getElementById("chat-msgs").innerHTML="";
   updateMeters();
   updateDots();
-  addSys("Conectando com o cliente...");
-  setTimeout(function(){
-    document.getElementById("chat-msgs").innerHTML="";
-    deliver(0);
-  }, 900);
+  showIntro();
 }
 
-// ── CHAT ───────────────────────────────────
-function addBubble(type, text, meta){
-  var wrap = document.getElementById("chat-msgs");
-  var el   = document.createElement("div");
-  el.className = "bubble " + (type==="client"?"bc":type==="user"?"bu":"bsys");
-  if(type==="system"){
-    el.innerHTML = '<div class="bt">'+text+'</div>';
-  } else {
-    el.innerHTML = '<div class="bt">'+text+'</div>'+(meta?'<div class="bm">'+meta+'</div>':"");
-  }
-  wrap.appendChild(el);
-  wrap.scrollTop = wrap.scrollHeight;
+function showIntro(){
+  var wrap=document.getElementById("chat-msgs");
+  var card=document.createElement("div");
+  card.className="intro-card";
+  card.innerHTML=
+    '<div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);margin-bottom:12px;">Seu desafio</div>'+
+    '<p style="font-family:Lora,serif;font-size:15px;line-height:1.8;color:var(--t1);">'+
+    'Voce vai vender <strong>'+G.product+'</strong> para <strong>'+G.clientName+'</strong>, '+
+    'uma pessoa ocupada e racional que esta comparando opcoes no mercado. '+
+    'Ela nao tem muito tempo e vai trazer objecoes reais. '+
+    'Seu objetivo: conduzir a conversa e avancar para um fechamento.'+
+    '</p>'+
+    '<div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--b1);font-size:12px;color:var(--t3);">'+
+    'Tempo por rodada: 30-40s &nbsp; . &nbsp; Sem pausar ou voltar'+
+    '</div>';
+  wrap.appendChild(card);
+
+  var btnWrap=document.createElement("div");
+  btnWrap.style.cssText="text-align:center;padding:8px 0 4px 0;align-self:center;";
+  btnWrap.innerHTML='<button onclick="beginChat()" style="background:var(--ac);color:#fff;border:none;padding:14px 36px;border-radius:10px;font-family:Syne,sans-serif;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 4px 20px rgba(255,92,26,.35);letter-spacing:.01em;">Comecar conversa</button>';
+  wrap.appendChild(btnWrap);
 }
-function addSys(t){ addBubble("system",t,""); }
+
+function beginChat(){
+  document.getElementById("chat-msgs").innerHTML="";
+  deliver(0);
+}
+
+function addBubble(type, text, meta){
+  var wrap=document.getElementById("chat-msgs");
+  var el=document.createElement("div");
+  el.className="bubble "+(type==="client"?"bc":type==="user"?"bu":"bsys");
+  el.innerHTML='<div class="bt">'+text+'</div>'+(meta?'<div class="bm">'+meta+'</div>':"");
+  wrap.appendChild(el);
+  wrap.scrollTop=wrap.scrollHeight;
+}
+function addSys(t){
+  var wrap=document.getElementById("chat-msgs");
+  var el=document.createElement("div");
+  el.className="bubble bsys";
+  el.innerHTML='<div class="bt">'+t+'</div>';
+  wrap.appendChild(el);
+  wrap.scrollTop=wrap.scrollHeight;
+}
 function showTyping(){
   var wrap=document.getElementById("chat-msgs");
   var el=document.createElement("div");
@@ -437,7 +452,7 @@ function deliver(idx){
   showTyping();
   setTimeout(function(){
     removeTyping();
-    addBubble("client", R.msg, "");
+    addBubble("client", R.msg, G.clientName);
     enableInput();
     startTimer(R.time);
   }, 700+Math.floor(Math.random()*500));
@@ -450,8 +465,7 @@ function enableInput(){
   inp.value="";
   document.getElementById("char-cnt").textContent="0 / 240";
   document.getElementById("char-warn").style.display="none";
-  G.locked=false;
-  G.startTs=Date.now();
+  G.locked=false; G.startTs=Date.now();
   inp.focus();
 }
 function disableInput(){
@@ -460,26 +474,18 @@ function disableInput(){
   G.locked=true;
 }
 
-// input listeners
-(function(){
-  function bindListeners(){
-    var inp=document.getElementById("chat-inp");
-    if(!inp){ setTimeout(bindListeners,200); return; }
-    inp.addEventListener("input",function(){
-      var l=this.value.length;
-      document.getElementById("char-cnt").textContent=l+" / 240";
-      document.getElementById("char-warn").style.display=l>=240?"inline":"none";
-    });
-    inp.addEventListener("keydown",function(e){
-      if(e.key==="Enter"&&!e.shiftKey){ e.preventDefault(); submitResp(); }
-    });
-  }
-  if(document.readyState==="loading"){
-    document.addEventListener("DOMContentLoaded",bindListeners);
-  } else { bindListeners(); }
-})();
+document.addEventListener("DOMContentLoaded",function(){
+  var inp=document.getElementById("chat-inp");
+  inp.addEventListener("input",function(){
+    var l=this.value.length;
+    document.getElementById("char-cnt").textContent=l+" / 240";
+    document.getElementById("char-warn").style.display=l>=240?"inline":"none";
+  });
+  inp.addEventListener("keydown",function(e){
+    if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();submitResp();}
+  });
+});
 
-// ── TIMER ──────────────────────────────────
 function startTimer(sec){
   stopTimer();
   G.tLeft=sec; G.tTotal=sec;
@@ -487,7 +493,7 @@ function startTimer(sec){
   G.timer=setInterval(function(){
     G.tLeft--;
     renderTimer(G.tLeft,G.tTotal);
-    if(G.tLeft<=0){ stopTimer(); timeout(); }
+    if(G.tLeft<=0){stopTimer();timeoutRound();}
   },1000);
 }
 function stopTimer(){ if(G.timer){clearInterval(G.timer);G.timer=null;} }
@@ -500,43 +506,41 @@ function renderTimer(t,total){
   lbl.textContent=t+"s";
   lbl.style.color=t<=8?"var(--rd)":t<=15?"var(--am)":"var(--t3)";
 }
-function timeout(){
+function timeoutRound(){
   if(G.locked) return;
   disableInput();
   process("", (Date.now()-G.startTs)/1000, true);
 }
 
-// ── SUBMIT ─────────────────────────────────
 function submitResp(){
   if(G.locked) return;
   stopTimer();
   var text=document.getElementById("chat-inp").value.replace(/^\s+|\s+$/g,"");
   var elapsed=(Date.now()-G.startTs)/1000;
   disableInput();
-  if(text) addBubble("user", text, "você · "+Math.round(elapsed)+"s");
+  if(text) addBubble("user", text, "voce  .  "+Math.round(elapsed)+"s");
   else addSys("Sem resposta enviada.");
   process(text, elapsed, false);
 }
 
-// ── PROCESSAR ──────────────────────────────
-function process(text, elapsed, timeout){
+function process(text, elapsed, isTimeout){
   var idx=G.cur;
   var R=G.rounds[idx];
   var wc=text.split(/\s+/).filter(function(w){return w.length>0;}).length;
   var prof=getProf(text);
-  var temP=/\?/.test(text);
+  var temP=(text.indexOf("?")>=0);
   var temA=(prof.acao||0)>0;
   var temE=(prof.empatia||0)>0;
   var rep=idx>0&&profSim(prof,G.argHist[idx-1]||{})>0.6;
   var adapt=idx>0&&!rep&&wc>5;
 
-  if(timeout||wc<3){
+  if(isTimeout||wc<3){
     G.interest=Math.max(0,G.interest-15);
     G.resist=Math.min(100,G.resist+10);
     G.trust=Math.max(0,G.trust-8);
   } else {
     if(temP){G.trust=Math.min(100,G.trust+10);G.interest=Math.min(100,G.interest+5);}
-    if(temA){G.interest=Math.min(100,G.interest+8);}
+    if(temA) G.interest=Math.min(100,G.interest+8);
     if(temE){G.trust=Math.min(100,G.trust+8);G.resist=Math.max(0,G.resist-5);}
     if(rep){G.resist=Math.min(100,G.resist+12);G.interest=Math.max(0,G.interest-5);}
     if(adapt){G.interest=Math.min(100,G.interest+8);G.resist=Math.max(0,G.resist-8);}
@@ -545,8 +549,8 @@ function process(text, elapsed, timeout){
   }
   updateMeters();
 
-  var sc=evalRound(text,wc,elapsed,timeout,idx,prof,R);
-  G.responses.push({round:idx+1,type:R.type,tag:R.tag,msg:R.msg,text:text||"(sem resposta)",wc:wc,elapsed:elapsed,timeout:timeout,scores:sc,prof:prof});
+  var sc=evalRound(text,wc,elapsed,isTimeout,idx,prof,R);
+  G.responses.push({round:idx+1,type:R.type,tag:R.tag,msg:R.msg,text:text||"(sem resposta)",wc:wc,elapsed:elapsed,timeout:isTimeout,scores:sc,prof:prof});
   G.scores.p.push(sc.p);
   G.scores.a.push(sc.a);
   G.scores.c.push(sc.c);
@@ -561,26 +565,21 @@ function process(text, elapsed, timeout){
   setTimeout(function(){deliver(next);}, 1000+Math.floor(Math.random()*600));
 }
 
-// ── AVALIAR ────────────────────────────────
-function evalRound(text,wc,elapsed,timeout,idx,prof,R){
+function evalRound(text,wc,elapsed,isTimeout,idx,prof,R){
   var p=0,a=0,c=0,s=0;
-
-  // persistência
   if(!text||wc<3){ p=-2; }
-  else if(timeout){ p=-1; }
+  else if(isTimeout){ p=-1; }
   else {
-    var avancou=(prof.acao||0)>0||/(próximo|agendar|marcar|quando|semana|demo|ligar)/i.test(text);
-    var desistiu=/^(ok|tudo bem|claro|entendo|certo|até|sem prob)/i.test(text)&&wc<14;
+    var avancou=(prof.acao||0)>0||/(proximo|agendar|marcar|quando|semana|demo|ligar)/i.test(text);
+    var desistiu=/^(ok|tudo bem|claro|entendo|certo|ate|sem prob)/i.test(text)&&wc<14;
     if(avancou) p=2;
     else if(desistiu) p=-2;
-    else if(/\?/.test(text)) p=1;
+    else if(text.indexOf("?")>=0) p=1;
     else p=0;
   }
 
-  // adaptação
-  if(idx===0){
-    a=wc>=8?1:-1;
-  } else {
+  if(idx===0){ a=wc>=8?1:-1; }
+  else {
     var prevP=G.argHist[idx-1]||{};
     var prevT=G.responses[idx-1]?G.responses[idx-1].text:"";
     var ls=lexSim(text,prevT);
@@ -606,49 +605,44 @@ function evalRound(text,wc,elapsed,timeout,idx,prof,R){
       else if(ls<0.18&&ps<0.25) a=2;
       else a=0;
     }
-    // penalidade acumulada
     if(idx>=2){
       var doms=[];
       for(var i=0;i<idx;i++) doms.push(dom(G.argHist[i]));
-      var d=dom(prof);
-      var cnt=0;
+      var d=dom(prof); var cnt=0;
       for(var i=0;i<doms.length;i++) if(doms[i]===d) cnt++;
       if(d&&cnt>=2) a=Math.max(-2,a-1);
     }
   }
 
-  // comunicação
   if(wc<3){ c=-2; }
   else {
     var temPV=/(posso|pode|vamos|podemos|gostaria|apresento|explico|mostro)/i.test(text);
     if(wc>75) c=-1;
-    else if(/\?/.test(text)&&temPV) c=2;
-    else if(/\?/.test(text)||temPV) c=1;
+    else if(text.indexOf("?")>=0&&temPV) c=2;
+    else if(text.indexOf("?")>=0||temPV) c=1;
     else c=0;
     if(elapsed<3&&wc>28) c=Math.max(-2,c-1);
-    if(timeout) c=Math.max(-2,c-1);
+    if(isTimeout) c=Math.max(-2,c-1);
   }
 
-  // estratégia
   var conduz=(prof.acao||0)>0;
-  var pergQ=(prof.pergunta||0)>0;
+  var pergQ=(prof.pergunta||0)>0||(text.indexOf("?")>=0);
   if(wc<3) s=-2;
   else if(conduz&&pergQ) s=2;
   else if(conduz||pergQ) s=1;
   else s=-1;
-  if(timeout) s=Math.max(-2,s-1);
+  if(isTimeout) s=Math.max(-2,s-1);
 
   return{p:p,a:a,c:c,s:s};
 }
 
-// ── UI HELPERS ─────────────────────────────
 function updateMeters(){
-  var m=document.getElementById("m-interest"); if(m) m.style.width=G.interest+"%";
-  var r=document.getElementById("m-resist");   if(r) r.style.width=G.resist+"%";
-  var t=document.getElementById("m-trust");    if(t) t.style.width=G.trust+"%";
+  var mi=document.getElementById("m-interest"); if(mi) mi.style.width=G.interest+"%";
+  var mr=document.getElementById("m-resist");   if(mr) mr.style.width=G.resist+"%";
+  var mt=document.getElementById("m-trust");    if(mt) mt.style.width=G.trust+"%";
 }
 function updateDots(){
-  var el=document.getElementById("rdots");
+  var el=document.getElementById("rdots"); if(!el) return;
   var html="";
   for(var i=0;i<G.rounds.length;i++){
     var cls=i<G.cur?"done":i===G.cur?"active":"";
@@ -657,7 +651,8 @@ function updateDots(){
   el.innerHTML=html;
 }
 
-// ── RESULTADO ──────────────────────────────
+function norm(v){ return Math.max(0,Math.min(100,Math.round((v+10)/20*100))); }
+
 function computeResult(){
   stopTimer();
   var RS=G.scores;
@@ -679,8 +674,8 @@ function computeResult(){
   var dc={};
   for(var i=0;i<domArr.length;i++){if(domArr[i])dc[domArr[i]]=(dc[domArr[i]]||0)+1;}
   var maxR=0, topD=null;
-  var keys=Object.keys(dc);
-  for(var i=0;i<keys.length;i++){if(dc[keys[i]]>maxR){maxR=dc[keys[i]];topD=keys[i];}}
+  var dkeys=Object.keys(dc);
+  for(var i=0;i<dkeys.length;i++){if(dc[dkeys[i]]>maxR){maxR=dc[dkeys[i]];topD=dkeys[i];}}
   if(maxR>=3){sA=Math.max(0,sA-14);pats.push({t:'Argumento "'+topD+'" repetido em '+maxR+'/5 rodadas',pos:false});}
   else{
     var uniq={};for(var i=0;i<domArr.length;i++){if(domArr[i])uniq[domArr[i]]=1;}
@@ -697,14 +692,14 @@ function computeResult(){
   else if(fh>lh+2) pats.push({t:"Performance caiu nas rodadas finais",pos:false});
 
   var pq=0;
-  for(var i=0;i<G.responses.length;i++) if(/\?/.test(G.responses[i].text)) pq++;
-  if(pq>=3){sS=Math.min(100,sS+5);pats.push({t:"Fez perguntas em "+pq+" rodadas — postura consultiva",pos:true});}
-  else if(pq===0) pats.push({t:"Nunca fez perguntas — postura monológica",pos:false});
+  for(var i=0;i<G.responses.length;i++) if(G.responses[i].text.indexOf("?")>=0) pq++;
+  if(pq>=3){sS=Math.min(100,sS+5);pats.push({t:"Fez perguntas em "+pq+" rodadas  -  postura consultiva",pos:true});}
+  else if(pq===0) pats.push({t:"Nunca fez perguntas  -  postura monologica",pos:false});
 
   if(G.interest>=65) pats.push({t:"Cliente terminou com alto interesse ("+G.interest+")",pos:true});
   else if(G.interest<=35) pats.push({t:"Cliente terminou com baixo interesse ("+G.interest+")",pos:false});
-  if(G.resist<=35) pats.push({t:"Resistência do cliente reduziu ao longo da conversa",pos:true});
-  else if(G.resist>=70) pats.push({t:"Cliente manteve alta resistência",pos:false});
+  if(G.resist<=35) pats.push({t:"Resistencia do cliente reduziu ao longo da conversa",pos:true});
+  else if(G.resist>=70) pats.push({t:"Cliente manteve alta resistencia",pos:false});
 
   var total=Math.round((sP*0.3+sA*0.3+sC*0.25+sS*0.15));
   var prof=getProfileObj(sP,sA,sC,sS);
@@ -712,7 +707,7 @@ function computeResult(){
 
   var cand={
     id:Date.now()+Math.random(),
-    name:G.name, product:G.product,
+    name:G.name, product:G.product, clientName:G.clientName,
     scores:{persist:sP,adapt:sA,comm:sC,strategy:sS,total:total},
     clientState:{interest:G.interest,resist:G.resist,trust:G.trust},
     profile:prof, patterns:pats, analysis:analysis,
@@ -723,14 +718,13 @@ function computeResult(){
   renderResult(cand);
   show("s-result");
 }
-function norm(v){return Math.max(0,Math.min(100,Math.round((v+10)/20*100)));}
 
 var PROFILES=[
-  {n:"Estratégico Adaptativo",  t:function(p,a,c,s){return a>=65&&s>=65;}, c:"#22C55E"},
-  {n:"Executor sob Pressão",    t:function(p,a,c,s){return p>=70&&s>=55;}, c:"#3B82F6"},
+  {n:"Estrategico Adaptativo",  t:function(p,a,c,s){return a>=65&&s>=65;}, c:"#22C55E"},
+  {n:"Executor sob Pressao",    t:function(p,a,c,s){return p>=70&&s>=55;}, c:"#3B82F6"},
   {n:"Comunicador Eloquente",   t:function(p,a,c,s){return c>=70&&p>=50;}, c:"#F59E0B"},
-  {n:"Persistente s/ Estratégia",t:function(p,a,c,s){return p>=65&&a<45&&s<45;},c:"#F97316"},
-  {n:"Reativo Sem Direção",     t:function(p,a,c,s){return s<40&&a<40;},   c:"#EF4444"},
+  {n:"Persistente s/ Estrategia",t:function(p,a,c,s){return p>=65&&a<45&&s<45;},c:"#F97316"},
+  {n:"Reativo Sem Direcao",     t:function(p,a,c,s){return s<40&&a<40;},   c:"#EF4444"},
   {n:"Perfil Equilibrado",      t:function(p,a,c,s){return (p+a+c+s)/4>=55;},c:"#14B8A6"},
   {n:"Em Desenvolvimento",      t:function(){return true;},                 c:"#6B7280"}
 ];
@@ -740,16 +734,16 @@ function getProfileObj(p,a,c,s){
 }
 function buildAnalysis(p,a,c,s,total){
   var pts=[];
-  if(total>=75) pts.push("Excelente desempenho na simulação de vendas de "+G.product+".");
-  else if(total>=55) pts.push("Desempenho acima da média vendendo "+G.product+".");
-  else if(total>=35) pts.push("Desempenho mediano — base presente, estratégia a desenvolver.");
-  else pts.push("Desempenho abaixo da média — recomenda-se treinamento focado.");
-  if(p>=65) pts.push("Persistiu bem diante das objeções.");
-  else if(p<40) pts.push("Tendência a ceder rápido frente a negativas.");
-  if(a>=65) pts.push("Variou os argumentos com consistência.");
-  else if(a<40) pts.push("Repetiu estratégias sem adaptar ao contexto.");
-  if(c>=65) pts.push("Comunicação objetiva e clara.");
-  else if(c<40) pts.push("Comunicação pode ser mais direta.");
+  if(total>=75) pts.push("Excelente desempenho na simulacao de vendas de "+G.product+".");
+  else if(total>=55) pts.push("Desempenho acima da media vendendo "+G.product+".");
+  else if(total>=35) pts.push("Desempenho mediano  -  base presente, estrategia a desenvolver.");
+  else pts.push("Desempenho abaixo da media  -  recomenda-se treinamento focado.");
+  if(p>=65) pts.push("Persistiu bem diante das objecoes.");
+  else if(p<40) pts.push("Tendencia a ceder rapido frente a negativas.");
+  if(a>=65) pts.push("Variou os argumentos com consistencia.");
+  else if(a<40) pts.push("Repetiu estrategias sem adaptar ao contexto.");
+  if(c>=65) pts.push("Comunicacao objetiva e clara.");
+  else if(c<40) pts.push("Comunicacao pode ser mais direta.");
   if(s>=65) pts.push("Conduziu ativamente a conversa.");
   else if(s<40) pts.push("Postura predominantemente reativa.");
   if(G.interest>=65) pts.push("O cliente demonstrou interesse crescente ao longo da conversa.");
@@ -769,34 +763,37 @@ function renderResult(cand){
   document.getElementById("fi-res-v").textContent=cs.resist;
   document.getElementById("fi-tru").style.width=cs.trust+"%";
   document.getElementById("fi-tru-v").textContent=cs.trust;
+
   var dims=[
-    {l:"Persistência",v:S.persist,c:"#3B82F6"},
-    {l:"Adaptação",v:S.adapt,c:"#22C55E"},
-    {l:"Comunicação",v:S.comm,c:"#F59E0B"},
-    {l:"Estratégia",v:S.strategy,c:"#FF5C1A"}
+    {l:"Persistencia",v:S.persist,c:"#3B82F6"},
+    {l:"Adaptacao",v:S.adapt,c:"#22C55E"},
+    {l:"Comunicacao",v:S.comm,c:"#F59E0B"},
+    {l:"Estrategia",v:S.strategy,c:"#FF5C1A"}
   ];
   var skHtml="";
   for(var i=0;i<dims.length;i++){
-    skHtml+='<div class="skrow"><span class="skname">'+dims[i].l+'</span><div class="sktrack"><div class="skfill" style="width:'+dims[i].v+'%;background:'+dims[i].c+';"></div></div><span class="skval">'+dims[i].v+'</span></div>';
+    skHtml+='<div class="skrow"><span class="skname">'+dims[i].l+'</span><div class="sktrack"><div class="skfill" style="width:'+dims[i].v+'%;background:'+dims[i].c+';height:100%;border-radius:20px;"></div></div><span class="skval">'+dims[i].v+'</span></div>';
   }
   document.getElementById("r-skills").innerHTML=skHtml;
   document.getElementById("r-analysis").textContent=cand.analysis;
+
   var patHtml="";
   for(var i=0;i<(cand.patterns||[]).length;i++){
     var pt=cand.patterns[i];
     patHtml+='<div class="srow"><div class="sdot" style="background:'+(pt.pos?"var(--gr)":"var(--rd)")+'"></div><p style="font-size:13px;color:var(--t2);">'+pt.t+'</p></div>';
   }
-  document.getElementById("r-patterns").innerHTML=patHtml||"<p style='font-size:12px;color:var(--t3);'>Nenhum padrão significativo.</p>";
+  document.getElementById("r-patterns").innerHTML=patHtml||"<p style='font-size:12px;color:var(--t3);'>Nenhum padrao significativo.</p>";
+
   var trHtml="";
   for(var i=0;i<(cand.responses||[]).length;i++){
     var r=cand.responses[i];
-    var sc=r.scores.p+r.scores.a+r.scores.c+r.scores.s;
-    var cls=sc>=5?"tg-green":sc>=0?"tg-gray":"tg-red";
+    var sc2=r.scores.p+r.scores.a+r.scores.c+r.scores.s;
+    var cls2=sc2>=5?"tg-green":sc2>=0?"tg-gray":"tg-red";
     var tCls={rejeicao:"tg-red",pressa:"tg-amber",preco:"tg-blue",concorrencia:"tg-green",saida:"tg-gray"}[r.type]||"tg-gray";
     trHtml+='<div style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--b1);">';
     trHtml+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">';
-    trHtml+='<div style="display:flex;align-items:center;gap:6px;"><span class="tag '+tCls+'">'+r.tag+'</span><span style="font-size:12px;color:var(--t3);">"'+r.msg+'"</span></div>';
-    trHtml+='<div style="display:flex;gap:5px;"><span class="tag '+cls+'">'+(sc>0?"+":"")+sc+'</span><span style="font-family:JetBrains Mono,monospace;font-size:10px;color:var(--t3);">'+Math.round(r.elapsed)+'s</span></div>';
+    trHtml+='<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;"><span class="tag '+tCls+'">'+r.tag+'</span><span style="font-size:12px;color:var(--t3);">"'+r.msg+'"</span></div>';
+    trHtml+='<div style="display:flex;gap:5px;flex-shrink:0;"><span class="tag '+cls2+'">'+(sc2>0?"+":"")+sc2+'</span><span style="font-family:JetBrains Mono,monospace;font-size:10px;color:var(--t3);">'+Math.round(r.elapsed)+'s</span></div>';
     trHtml+='</div>';
     trHtml+='<div style="background:var(--s2);border-left:3px solid var(--b2);padding:9px 13px;border-radius:0 8px 8px 0;font-size:13px;color:var(--t2);font-family:Lora,serif;font-style:italic;">'+r.text+'</div>';
     trHtml+='</div>';
@@ -804,14 +801,13 @@ function renderResult(cand){
   document.getElementById("r-transcript").innerHTML=trHtml;
 }
 
-// ── EMPRESA ────────────────────────────────
 function renderCompany(){ switchTab("list"); }
 
 function renderList(){
   var el=document.getElementById("p-list");
   var sorted=CANDS.slice().sort(function(a,b){return b.scores.total-a.scores.total;});
   if(!sorted.length){
-    el.innerHTML='<div style="text-align:center;padding:4rem 2rem;color:var(--t3);"><div style="font-size:36px;margin-bottom:1rem;">📋</div><p style="font-size:15px;font-weight:600;color:var(--t2);margin-bottom:.5rem;">Nenhum candidato ainda</p><p style="font-size:13px;">Compartilhe o link para candidatos realizarem a avaliação.</p></div>';
+    el.innerHTML='<div style="text-align:center;padding:4rem 2rem;color:var(--t3);"><div style="font-size:36px;margin-bottom:1rem;">📋</div><p style="font-size:15px;font-weight:600;color:var(--t2);margin-bottom:.5rem;">Nenhum candidato ainda</p><p style="font-size:13px;">Compartilhe o link para candidatos realizarem a avaliacao.</p></div>';
     return;
   }
   var html="";
@@ -822,18 +818,17 @@ function renderList(){
     var alerts=0;
     for(var j=0;j<(c.patterns||[]).length;j++){if(!c.patterns[j].pos)alerts++;}
     var initials=c.name.split(" ").map(function(w){return w[0]||"";}).join("").slice(0,2).toUpperCase();
-    html+='<div class="crow" onclick="showDetail(\''+c.id+'\')">';
-    html+='<div style="font-size:20px;min-width:24px;">'+medal+'</div>';
+    html+='<div class="crow" onclick="showDetail(\''+c.id+'\')"><div style="font-size:20px;min-width:24px;">'+medal+'</div>';
     html+='<div style="width:34px;height:34px;border-radius:50%;background:var(--s2);border:1px solid var(--b1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--t2);flex-shrink:0;">'+initials+'</div>';
-    html+='<div style="flex:1;">';
-    html+='<div style="display:flex;align-items:center;gap:7px;margin-bottom:4px;"><span style="font-size:14px;font-weight:600;">'+c.name+'</span><span class="tag '+tcls+'">'+c.scores.total+' pts</span>'+(alerts>0?'<span class="tag tg-amber">'+alerts+' alertas</span>':'')+'</div>';
-    html+='<div style="font-size:11px;color:var(--t3);margin-bottom:4px;">'+c.product+' · '+c.date+'</div>';
+    html+='<div style="flex:1;min-width:0;">';
+    html+='<div style="display:flex;align-items:center;gap:7px;margin-bottom:4px;flex-wrap:wrap;"><span style="font-size:14px;font-weight:600;">'+c.name+'</span><span class="tag '+tcls+'">'+c.scores.total+' pts</span>'+(alerts>0?'<span class="tag tg-amber">'+alerts+' alertas</span>':'')+'</div>';
+    html+='<div style="font-size:11px;color:var(--t3);margin-bottom:4px;">'+c.product+'  .  '+c.date+'</div>';
     html+='<div style="display:flex;gap:10px;">';
     var dims=[["P",c.scores.persist,"#3B82F6"],["A",c.scores.adapt,"#22C55E"],["C",c.scores.comm,"#F59E0B"],["S",c.scores.strategy,"#FF5C1A"]];
     for(var d=0;d<dims.length;d++){
       html+='<div style="display:flex;align-items:center;gap:4px;"><span style="font-size:10px;color:var(--t3);">'+dims[d][0]+'</span><div style="width:36px;height:3px;background:var(--b1);border-radius:20px;overflow:hidden;"><div style="width:'+dims[d][1]+'%;height:100%;background:'+dims[d][2]+';border-radius:20px;"></div></div><span style="font-family:JetBrains Mono,monospace;font-size:10px;color:var(--t2);">'+dims[d][1]+'</span></div>';
     }
-    html+='</div></div><span style="color:var(--b2);font-size:18px;">›</span></div>';
+    html+='</div></div><span style="color:var(--b2);font-size:18px;">></span></div>';
   }
   el.innerHTML=html;
 }
@@ -848,21 +843,21 @@ function showDetail(id){
   html+='<div style="width:88px;height:88px;border-radius:50%;background:var(--ac);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 30px rgba(255,92,26,.25);"><div style="font-size:30px;font-weight:800;color:#fff;line-height:1;">'+S.total+'</div><div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);">Score</div></div>';
   html+='<div><div class="eyebrow" style="margin-bottom:6px;">Candidato</div><div style="font-size:18px;font-weight:700;margin-bottom:8px;">'+c.name+'</div><div class="pbadge" style="background:'+prof.c+';">'+prof.n+'</div><div style="font-size:11px;color:var(--t3);margin-top:8px;">Produto: '+c.product+'</div></div></div>';
   html+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;">';
-  var dlist=[["Persistência",S.persist,"#3B82F6"],["Adaptação",S.adapt,"#22C55E"],["Comunicação",S.comm,"#F59E0B"],["Estratégia",S.strategy,"#FF5C1A"]];
+  var dlist=[["Persist.",S.persist,"#3B82F6"],["Adaptacao",S.adapt,"#22C55E"],["Comunicao",S.comm,"#F59E0B"],["Estrategia",S.strategy,"#FF5C1A"]];
   for(var i=0;i<dlist.length;i++){
     html+='<div style="background:var(--s1);border:1px solid var(--b1);border-top:3px solid '+dlist[i][2]+';border-radius:10px;padding:14px;text-align:center;"><div style="font-size:9px;color:var(--t3);margin-bottom:4px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;">'+dlist[i][0]+'</div><div style="font-family:JetBrains Mono,monospace;font-size:22px;font-weight:500;">'+dlist[i][1]+'</div></div>';
   }
   html+='</div>';
   if(cs.interest!==undefined){
     html+='<div class="card" style="margin-bottom:16px;"><div class="eyebrow" style="margin-bottom:12px;">Estado final do cliente</div>';
-    var csList=[["Interesse",cs.interest,"var(--gr)"],["Resistência",cs.resist,"var(--am)"],["Confiança",cs.trust,"var(--bl)"]];
+    var csList=[["Interesse",cs.interest,"var(--gr)"],["Resistencia",cs.resist,"var(--am)"],["Confianca",cs.trust,"var(--bl)"]];
     for(var i=0;i<csList.length;i++){
-      html+='<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;"><span style="font-size:12px;color:var(--t2);min-width:90px;">'+csList[i][0]+'</span><div class="sktrack" style="flex:1;"><div class="skfill" style="width:'+csList[i][1]+'%;background:'+csList[i][2]+';"></div></div><span style="font-family:JetBrains Mono,monospace;font-size:12px;color:var(--t2);">'+csList[i][1]+'</span></div>';
+      html+='<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;"><span style="font-size:12px;color:var(--t2);min-width:90px;">'+csList[i][0]+'</span><div class="sktrack" style="flex:1;"><div class="skfill" style="width:'+csList[i][1]+'%;background:'+csList[i][2]+';height:100%;border-radius:20px;"></div></div><span style="font-family:JetBrains Mono,monospace;font-size:12px;color:var(--t2);">'+csList[i][1]+'</span></div>';
     }
     html+='</div>';
   }
-  html+='<div class="card" style="margin-bottom:16px;"><div class="eyebrow" style="margin-bottom:12px;">Análise comportamental</div><p style="font-family:Lora,serif;font-size:14px;line-height:1.75;color:var(--t2);">'+(c.analysis||"—")+'</p></div>';
-  html+='<div class="card" style="margin-bottom:16px;"><div class="eyebrow" style="margin-bottom:14px;">Padrões</div>';
+  html+='<div class="card" style="margin-bottom:16px;"><div class="eyebrow" style="margin-bottom:12px;">Analise comportamental</div><p style="font-family:Lora,serif;font-size:14px;line-height:1.75;color:var(--t2);">'+(c.analysis||" - ")+'</p></div>';
+  html+='<div class="card" style="margin-bottom:16px;"><div class="eyebrow" style="margin-bottom:14px;">Padroes</div>';
   for(var i=0;i<(c.patterns||[]).length;i++){
     var pt=c.patterns[i];
     html+='<div class="srow"><div class="sdot" style="background:'+(pt.pos?"var(--gr)":"var(--rd)")+'"></div><p style="font-size:13px;color:var(--t2);">'+pt.t+'</p></div>';
@@ -871,15 +866,12 @@ function showDetail(id){
   html+='<div class="card" style="margin-bottom:16px;"><div class="eyebrow" style="margin-bottom:16px;">Respostas</div>';
   for(var i=0;i<(c.responses||[]).length;i++){
     var r=c.responses[i];
-    var sc=r.scores.p+r.scores.a+r.scores.c+r.scores.s;
-    var cls=sc>=5?"tg-green":sc>=0?"tg-gray":"tg-red";
-    html+='<div style="margin-bottom:13px;padding-bottom:13px;border-bottom:1px solid var(--b1);">';
-    html+='<div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-size:11px;font-weight:600;color:var(--t3);">Rodada '+r.round+' — '+r.tag+'</span><span class="tag '+cls+'">'+(sc>0?"+":"")+sc+'</span></div>';
-    html+='<div style="font-size:11px;color:var(--t3);margin-bottom:5px;">"'+r.msg+'"</div>';
-    html+='<div style="background:var(--s2);border-left:3px solid var(--b2);padding:8px 12px;border-radius:0 7px 7px 0;font-size:13px;font-family:Lora,serif;color:var(--t2);">'+r.text+'</div></div>';
+    var sc3=r.scores.p+r.scores.a+r.scores.c+r.scores.s;
+    var cls3=sc3>=5?"tg-green":sc3>=0?"tg-gray":"tg-red";
+    html+='<div style="margin-bottom:13px;padding-bottom:13px;border-bottom:1px solid var(--b1);"><div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-size:11px;font-weight:600;color:var(--t3);">Rodada '+r.round+'  -  '+r.tag+'</span><span class="tag '+cls3+'">'+(sc3>0?"+":"")+sc3+'</span></div><div style="font-size:11px;color:var(--t3);margin-bottom:5px;">"'+r.msg+'"</div><div style="background:var(--s2);border-left:3px solid var(--b2);padding:8px 12px;border-radius:0 7px 7px 0;font-size:13px;font-family:Lora,serif;color:var(--t2);">'+r.text+'</div></div>';
   }
   html+='</div>';
-  html+='<button class="btn btn-ghost btn-sm" onclick="switchTab(\'list\')">← Voltar</button>';
+  html+='<button class="btn btn-ghost btn-sm" onclick="switchTab(\'list\')"><- Voltar</button>';
   document.getElementById("p-detail").innerHTML=html;
 }
 
@@ -887,23 +879,18 @@ function renderCompare(){
   var el=document.getElementById("p-compare");
   var sorted=CANDS.slice().sort(function(a,b){return b.scores.total-a.scores.total;}).slice(0,15);
   if(!sorted.length){el.innerHTML="<p style='color:var(--t3);font-size:14px;padding:2rem 0;'>Nenhum candidato ainda.</p>";return;}
-  var html='<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:12px;">';
-  html+='<thead><tr style="border-bottom:1px solid var(--b1);"><th style="text-align:left;padding:10px;color:var(--t3);font-weight:600;">#</th><th style="text-align:left;padding:10px;color:var(--t3);font-weight:600;">Nome</th><th style="text-align:left;padding:10px;color:var(--t3);font-weight:600;">Produto</th><th style="text-align:center;padding:10px;color:#3B82F6;font-weight:600;">P</th><th style="text-align:center;padding:10px;color:#22C55E;font-weight:600;">A</th><th style="text-align:center;padding:10px;color:#F59E0B;font-weight:600;">C</th><th style="text-align:center;padding:10px;color:#FF5C1A;font-weight:600;">S</th><th style="text-align:center;padding:10px;color:var(--t1);font-weight:700;">Total</th></tr></thead>';
-  html+='<tbody>';
+  var html='<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:12px;"><thead><tr style="border-bottom:1px solid var(--b1);"><th style="text-align:left;padding:10px;color:var(--t3);font-weight:600;">#</th><th style="text-align:left;padding:10px;color:var(--t3);font-weight:600;">Nome</th><th style="text-align:left;padding:10px;color:var(--t3);font-weight:600;">Produto</th><th style="text-align:center;padding:10px;color:#3B82F6;font-weight:600;">P</th><th style="text-align:center;padding:10px;color:#22C55E;font-weight:600;">A</th><th style="text-align:center;padding:10px;color:#F59E0B;font-weight:600;">C</th><th style="text-align:center;padding:10px;color:#FF5C1A;font-weight:600;">S</th><th style="text-align:center;padding:10px;font-weight:700;">Total</th></tr></thead><tbody>';
   for(var i=0;i<sorted.length;i++){
     var c=sorted[i];
     var medal=i===0?"🥇":i===1?"🥈":i===2?"🥉":i+1;
     var col=c.scores.total>=70?"var(--gr)":c.scores.total>=48?"var(--am)":"var(--rd)";
     html+='<tr style="border-bottom:1px solid var(--b1);cursor:pointer;" onclick="showDetail(\''+c.id+'\')">';
-    html+='<td style="padding:10px;">'+medal+'</td>';
-    html+='<td style="padding:10px;font-weight:600;">'+c.name+'</td>';
-    html+='<td style="padding:10px;color:var(--t3);">'+(c.product||"").slice(0,22)+'</td>';
+    html+='<td style="padding:10px;">'+medal+'</td><td style="padding:10px;font-weight:600;">'+c.name+'</td><td style="padding:10px;color:var(--t3);">'+(c.product||"").slice(0,22)+'</td>';
     html+='<td style="text-align:center;padding:10px;font-family:JetBrains Mono,monospace;">'+c.scores.persist+'</td>';
     html+='<td style="text-align:center;padding:10px;font-family:JetBrains Mono,monospace;">'+c.scores.adapt+'</td>';
     html+='<td style="text-align:center;padding:10px;font-family:JetBrains Mono,monospace;">'+c.scores.comm+'</td>';
     html+='<td style="text-align:center;padding:10px;font-family:JetBrains Mono,monospace;">'+c.scores.strategy+'</td>';
-    html+='<td style="text-align:center;padding:10px;font-weight:700;color:'+col+';font-family:JetBrains Mono,monospace;">'+c.scores.total+'</td>';
-    html+='</tr>';
+    html+='<td style="text-align:center;padding:10px;font-weight:700;color:'+col+';font-family:JetBrains Mono,monospace;">'+c.scores.total+'</td></tr>';
   }
   html+='</tbody></table></div>';
   el.innerHTML=html;
@@ -919,8 +906,7 @@ function renderAlerts(){
   for(var i=0;i<wa.length;i++){
     var c=wa[i];
     var tcls=c.scores.total>=70?"tg-green":c.scores.total>=48?"tg-amber":"tg-red";
-    html+='<div class="card" style="margin-bottom:14px;">';
-    html+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;"><div><span style="font-size:14px;font-weight:600;">'+c.name+'</span><span class="tag '+tcls+'" style="margin-left:7px;">'+c.scores.total+' pts</span></div><button class="btn btn-ghost btn-sm" onclick="showDetail(\''+c.id+'\')">Detalhe</button></div>';
+    html+='<div class="card" style="margin-bottom:14px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;"><div><span style="font-size:14px;font-weight:600;">'+c.name+'</span><span class="tag '+tcls+'" style="margin-left:7px;">'+c.scores.total+' pts</span></div><button class="btn btn-ghost btn-sm" onclick="showDetail(\''+c.id+'\')">Detalhe</button></div>';
     for(var j=0;j<(c.patterns||[]).length;j++){
       if(!c.patterns[j].pos){
         html+='<div class="srow"><div class="sdot" style="background:var(--rd);"></div><p style="font-size:12px;color:var(--t2);">'+c.patterns[j].t+'</p></div>';
